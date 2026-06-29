@@ -2,14 +2,14 @@
 
 class Database
 {
-    private string $host = "localhost";
-    private string $dbname = "fitconnect";
-    private string $username = "root";
-    private string $password = "";
+    private $host = "localhost";
+    private $dbname = "fitconnect";
+    private $username = "root";
+    private $password = "";
 
-    private ?PDO $conn = null;
+    private $conn;
 
-    public function getConnection(): ?PDO
+    public function getConnection()
     {
         try {
             $this->conn = new PDO(
