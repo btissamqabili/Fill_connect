@@ -1,0 +1,72 @@
+<?php
+
+require_once '../../app/Controllers/AdherentController.php';
+require_once '../../app/Repositories/SalleRepository.php';
+
+$controller = new AdherentController();
+
+$salleRepository = new SalleRepository();
+$salles = $salleRepository->findAll();
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+    $controller->store(
+        $_POST['nom'],
+        $_POST['prenom'],
+        $_POST['email'],
+        $_POST['telephone'],
+        $_POST['id_salle']
+    );
+
+    header('Location: index.php');
+    exit;
+}
+?>
+
+<link rel="stylesheet" href="../../public/css/style.css">
+
+<div class="form-container">
+
+    <h1>Ajouter un adhérent</h1>
+
+    <form method="POST">
+
+        <div class="form-group">
+            <label>Nom</label>
+            <input type="text" name="nom" required>
+        </div>
+
+        <div class="form-group">
+            <label>Prénom</label>
+            <input type="text" name="prenom" required>
+        </div>
+
+        <div class="form-group">
+            <label>Email</label>
+            <input type="email" name="email" required>
+        </div>
+
+        <div class="form-group">
+            <label>Téléphone</label>
+            <input type="text" name="telephone" required>
+        </div>
+
+        <div class="form-group">
+            <label>Salle</label>
+
+            <select name="id_salle" required>
+                <?php foreach ($salles as $salle): ?>
+                    <option value="<?= $salle['id_salle'] ?>">
+                        <?= $salle['nom_salle'] ?>
+                    </option>
+                <?php endforeach; ?>
+            </select>
+        </div>
+
+        <button class="btn-submit">
+            Ajouter
+        </button>
+
+    </form>
+
+</div>
