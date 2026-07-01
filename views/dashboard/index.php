@@ -14,6 +14,7 @@ $nbSeances = $conn->query("SELECT COUNT(*) FROM seance")->fetchColumn();
 
 <link rel="stylesheet" href="../../public/css/style.css">
 <?php include '../layouts/header.php'; ?>
+
 <div class="container">
 
     <h1>Dashboard FitConnect</h1>
@@ -43,3 +44,4 @@ $nbSeances = $conn->query("SELECT COUNT(*) FROM seance")->fetchColumn();
     </div>
 
 </div>
+<?php require_once '../layouts/footer.php'; ?>

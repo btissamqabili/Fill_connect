@@ -12,6 +12,7 @@ $adherent = $controller->show($id);
 
 <link rel="stylesheet" href="../../public/css/style.css">
 <?php require_once '../layouts/header.php'; ?>
+
 <div class="show-container">
 
     <h1>Détails de l'adhérent</h1>
@@ -41,3 +42,4 @@ $adherent = $controller->show($id);
     </a>
 
 </div>
+<?php require_once '../layouts/footer.php'; ?>

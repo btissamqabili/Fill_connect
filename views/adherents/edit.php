@@ -31,6 +31,7 @@ $adherent = $controller->show($id);
 
 <link rel="stylesheet" href="../../public/css/style.css">
 <?php require_once '../layouts/header.php'; ?>
+
 <div class="form-container">
 
     <h1>Modifier un adhérent</h1>
@@ -99,3 +100,4 @@ $adherent = $controller->show($id);
     </form>
 
 </div>
+<?php require_once '../layouts/footer.php'; ?>

@@ -9,6 +9,7 @@ $salles = $controller->index();
 
 <link rel="stylesheet" href="../../public/css/style.css">
 <?php require_once '../layouts/header.php'; ?>
+
 <div class="container">
 
     <h1>Liste des salles</h1>
@@ -60,3 +61,4 @@ $salles = $controller->index();
     </table>
 
 </div>
+<?php require_once '../layouts/footer.php'; ?>

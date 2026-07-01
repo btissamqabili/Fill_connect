@@ -12,6 +12,7 @@ $salle = $controller->show($id);
 
 <link rel="stylesheet" href="../../public/css/style.css">
 <?php require_once '../layouts/header.php'; ?>
+
 <div class="show-container">
 
     <h1>Détails de la salle</h1>
@@ -36,3 +37,4 @@ $salle = $controller->show($id);
     </a>
 
 </div>
+<?php require_once '../layouts/footer.php'; ?>

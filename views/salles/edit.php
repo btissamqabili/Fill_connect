@@ -60,3 +60,4 @@ $salle = $controller->show($id);
     </form>
 
 </div>
+<?php require_once '../layouts/footer.php'; ?>
