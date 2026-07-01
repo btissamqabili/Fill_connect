@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 ?>
 
 <link rel="stylesheet" href="../../public/css/style.css">
-
+<?php require_once '../layouts/header.php'; ?>
 <div class="form-container">
 
     <h1>Ajouter un adhérent</h1>
