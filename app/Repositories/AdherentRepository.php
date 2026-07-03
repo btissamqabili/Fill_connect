@@ -24,16 +24,16 @@ class AdherentRepository
         return $stmt->fetchAll();
     }
 
-    public function findById($id)
-    {
-        $sql = "SELECT * FROM adherent
-                WHERE id_adherent = ?";
+public function findById($id)
+{
+    $sql = "SELECT * FROM adherent
+            WHERE id_adherent = ?";
 
-        $stmt = $this->conn->prepare($sql);
-        $stmt->execute([$id]);
+    $stmt = $this->conn->prepare($sql);
+    $stmt->execute([$id]);
 
-        return $stmt->fetch();
-    }
+    return $stmt->fetch(PDO::FETCH_ASSOC);
+}
 
     public function create(
         $nom,

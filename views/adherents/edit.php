@@ -8,7 +8,22 @@ $controller = new AdherentController();
 $salleRepository = new SalleRepository();
 $salles = $salleRepository->findAll();
 
+if (!isset($_GET['id'])) {
+    header('Location: index.php');
+    exit;
+}
+
 $id = $_GET['id'];
+
+$adherent = $controller->show($id);
+
+if (!$adherent) {
+    echo "<script>
+            alert('Adhérent introuvable.');
+            window.location.href='index.php';
+          </script>";
+    exit;
+}
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
@@ -24,8 +39,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     header('Location: index.php');
     exit;
 }
-
-$adherent = $controller->show($id);
 
 ?>
 
@@ -43,7 +56,7 @@ $adherent = $controller->show($id);
             <input
                 type="text"
                 name="nom"
-                value="<?= $adherent['nom'] ?>"
+                value="<?= htmlspecialchars($adherent['nom']) ?>"
                 required>
         </div>
 
@@ -52,7 +65,7 @@ $adherent = $controller->show($id);
             <input
                 type="text"
                 name="prenom"
-                value="<?= $adherent['prenom'] ?>"
+                value="<?= htmlspecialchars($adherent['prenom']) ?>"
                 required>
         </div>
 
@@ -61,7 +74,7 @@ $adherent = $controller->show($id);
             <input
                 type="email"
                 name="email"
-                value="<?= $adherent['email'] ?>"
+                value="<?= htmlspecialchars($adherent['email']) ?>"
                 required>
         </div>
 
@@ -70,21 +83,21 @@ $adherent = $controller->show($id);
             <input
                 type="text"
                 name="telephone"
-                value="<?= $adherent['telephone'] ?>"
+                value="<?= htmlspecialchars($adherent['telephone']) ?>"
                 required>
         </div>
 
         <div class="form-group">
             <label>Salle</label>
 
-            <select name="id_salle">
+            <select name="id_salle" required>
 
                 <?php foreach ($salles as $salle): ?>
 
                     <option
                         value="<?= $salle['id_salle'] ?>"
-                        <?= $salle['id_salle'] == $adherent['id_salle'] ? 'selected' : '' ?>>
-                        <?= $salle['nom_salle'] ?>
+                        <?= ($salle['id_salle'] == $adherent['id_salle']) ? 'selected' : '' ?>>
+                        <?= htmlspecialchars($salle['nom_salle']) ?>
                     </option>
 
                 <?php endforeach; ?>
@@ -93,11 +106,12 @@ $adherent = $controller->show($id);
 
         </div>
 
-        <button class="btn-submit">
+        <button type="submit" class="btn-submit">
             Modifier
         </button>
 
     </form>
 
 </div>
+
 <?php require_once '../layouts/footer.php'; ?>
