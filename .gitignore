@@ -1,0 +1,26 @@
+# Fichiers système
+.DS_Store
+Thumbs.db
+
+# VS Code
+.vscode/
+
+# Dépendances
+vendor/
+
+# Logs
+*.log
+
+# Fichiers temporaires
+*.tmp
+*.cache
+
+# Variables d'environnement
+.env
+
+# Sauvegardes
+*.zip
+*.rar
+
+# XAMPP
+xampp-control.ini
